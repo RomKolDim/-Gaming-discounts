@@ -10,7 +10,6 @@ Thumbs.db
 
 # Зависимости
 node_modules/
-package-lock.json
 
 # Файлы IDE и редакторов
 .vscode/
