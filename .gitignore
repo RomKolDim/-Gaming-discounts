@@ -1,0 +1,28 @@
+# Логи и временные файлы
+*.log
+*.tmp
+*.swp
+*.swo
+*.swn
+*.bak
+.DS_Store
+Thumbs.db
+
+# Зависимости
+node_modules/
+package-lock.json
+
+# Файлы IDE и редакторов
+.vscode/
+.idea/
+*.iml
+
+# Конфигурационные файлы ОС
+*.DS_Store
+*.vscode/
+*.history/
+
+# Кеши
+.cache/
+dist/
+build/

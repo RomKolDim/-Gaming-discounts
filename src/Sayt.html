@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steam Price</title>
+  <link rel="stylesheet" href="dizain.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="/">Steam Price</a>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li><a href="https://store.steampowered.com/">Steam</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="banner-container">
+    <div class="gaming-banner">
+      <img src="/src/Image/травма.png" alt="Игровое изображение 1" class="banner-image">
+      <img src="/src/Image/арасака.png" alt="Игровое изображение 2" class="banner-image">
+      <img src="/src/Image/милитех.png" alt="Игровое изображение 3" class="banner-image">
+      <img src="/src/Image/канг тао.png" alt="Игровое изображение 4" class="banner-image">
+    </div>
+  </div>
+
+  <div class = "main-text">
+    <h1>Найдите лучшие скидки!</h1>
+  </div>
+
+  <!-- Контейнер для поиска и фильтров -->
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Название игры">
+    <input type="number" id="exact-discount-input" placeholder="Точная скидка (%)">
+    <input type="number" id="max-price-input" placeholder="Макс. цена ($)" step="0.01">
+    <button id="search-button">Поиск</button>
+  </div>
+
+  <div id="deals-container"></div>
+
+  <!-- Элементы для пагинации -->
+  <div class="pagination">
+    <button id="prev-page" disabled>Предыдущая страница</button>
+    <span id="page-number">1</span>
+    <button id="next-page">Следующая страница</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>О нас</h3>
+        <p>Steam Price - лучший магазин цифровых игр и программ.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="#" onclick="openModal('aboutModal'); return false;">О компании</a></li>
+          <li><a href="#" onclick="openModal('contactModal'); return false;">Контакты</a></li>
+          <li><a href="#" onclick="openModal('supportModal'); return false;">Поддержка</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Следите за нами</h3>
+        <div class="social-icons">
+          <a href="https://t.me/+fGUC9U-loW41ZjVi"><img src="/src/Image/icons8-телеграм.svg" alt="Telegram"></a>
+          <a href="https://github.com/RomKolDim/-Gaming-discounts"><img src="/src/Image/github-mark-white.svg" alt="GitHub"></a>
+          <a href="https://discord.gg/Dwn75T2P"><img src="/src/Image/icons8-discord.svg" alt="Discord"></a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 Steam Price. Все права защищены.</p>
+  </footer>
+  
+  <!-- ВСПЛЫВАЮЩИЕ ОКНА -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+      <h2>О компании</h2>
+      <p>Мы предоставляем лучшие цифровые товары по доступным ценам.</p>
+    </div>
+  </div>
+  
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('contactModal')">&times;</span>
+      <h2>Контакты</h2>
+      <p>Email: support@steamprice.com</p>
+      <p>Телефон: +7 (123) 456-78-90</p>
+    </div>
+  </div>
+  
+  <div id="supportModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('supportModal')">&times;</span>
+      <h2>Поддержка</h2>
+      <p>Напишите нам в Telegram или Discord, и мы поможем вам!</p>
+    </div>
+  </div>
+
+  <script src="/src/Banner.js"></script>
+  <script src="/src/Information.js"></script>
+
+  <script>
+    // Функции для работы всплывающих окон
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.style.display = "block";
+      setTimeout(() => {
+        modal.classList.add("show");
+      }, 10);
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove("show");
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 300);
+    }
+
+    // Добавляем обработку событий для ссылок, чтобы предотвратить прокрутку страницы вверх
+    document.querySelectorAll('.footer a').forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>
