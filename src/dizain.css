@@ -119,7 +119,7 @@ h1
 .game-card 
 {
   position: relative;
-  background: #505796af;
+  background: lightslategrey;
   border: none;
   width: 250px;
   display: flex;

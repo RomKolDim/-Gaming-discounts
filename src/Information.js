@@ -52,13 +52,8 @@ async function loadDeals(page, search = "", exactDiscount = "", maxPrice = "")
                     displayTitle = deal.title.substring(0, maxLength) + "...";
                 }
 
-                //Переход на сайт с игрой
+                //Ссылка на сайт с игрой
                 const steamUrl = deal.steamAppID ? `https://store.steampowered.com/app/${deal.steamAppID}` : `#`;
-                const gameLink = document.createElement("a");
-                gameLink.href = steamUrl;
-                gameLink.target = "_blank";
-                gameLink.style.textDecoration = "none";
-                gameLink.style.color = "inherit";
                 
                 card.innerHTML = `
                 <a href = "${steamUrl}">
@@ -84,7 +79,6 @@ async function loadDeals(page, search = "", exactDiscount = "", maxPrice = "")
                     </div>
                 </div>
                 `;
-                container.appendChild(gameLink);
                 container.appendChild(card);
             });
         }
