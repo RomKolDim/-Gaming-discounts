@@ -17,8 +17,6 @@ node_modules/
 *.iml
 
 # Конфигурационные файлы ОС
-*.DS_Store
-*.vscode/
 *.history/
 
 # Кеши

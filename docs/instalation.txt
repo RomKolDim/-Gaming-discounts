@@ -1,0 +1,8 @@
+How to install?
+
+1. init git
+2. git remote add origin 'Our URL'
+3. npm install axios, express, cors
+4. node server.js
+
+You are welcome to use!
