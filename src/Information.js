@@ -51,8 +51,17 @@ async function loadDeals(page, search = "", exactDiscount = "", maxPrice = "")
                 {
                     displayTitle = deal.title.substring(0, maxLength) + "...";
                 }
+
+                //Переход на сайт с игрой
+                const steamUrl = deal.steamAppID ? `https://store.steampowered.com/app/${deal.steamAppID}` : `#`;
+                const gameLink = document.createElement("a");
+                gameLink.href = steamUrl;
+                gameLink.target = "_blank";
+                gameLink.style.textDecoration = "none";
+                gameLink.style.color = "inherit";
                 
                 card.innerHTML = `
+                <a href = "${steamUrl}">
                 <div class="image-wrapper">
                     <img 
                         src="${imageUrl}" 
@@ -61,9 +70,10 @@ async function loadDeals(page, search = "", exactDiscount = "", maxPrice = "")
                         onerror="this.onerror=null; this.src='${deal.thumb}'"
                     >
                 </div>
+                </a>
                 <div class="info">
                     <h2 class="game-title">${displayTitle}</h2>
-                    <p class="discount"><strong>${parseInt(deal.savings)}%</strong></p>
+                    <p class="discount"><strong>${parseInt(deal.savings)}%</strong></p>     
                     <div class="price-row">
                         <p class="normal-price">
                             <s>$${deal.normalPrice}</s>
@@ -74,6 +84,7 @@ async function loadDeals(page, search = "", exactDiscount = "", maxPrice = "")
                     </div>
                 </div>
                 `;
+                container.appendChild(gameLink);
                 container.appendChild(card);
             });
         }
