@@ -136,7 +136,7 @@ document.querySelectorAll(".search-container input").forEach(input => {
 });
 
 // Начальная загрузка первой страницы без фильтров
-window.onload = function() 
+window.onload = function()
 {
     loadDeals(currentPage, currentSearch, currentExactDiscount, currentMaxPrice);
 }

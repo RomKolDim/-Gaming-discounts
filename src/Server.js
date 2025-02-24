@@ -1,7 +1,6 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
-
 const app = express();
 const port = 3000;
 
@@ -28,38 +27,47 @@ async function fetchAllDeals()
   
   let allDeals = [];
   let page = 0;
-  while (true) {
-    const response = await axios.get("https://www.cheapshark.com/api/1.0/deals", {
-      params: {
-        storeID: STORE_ID,
-        onSale: 1,
-        pageNumber: page,
-      },
-    });
-    const data = response.data;
-    if (!data || data.length === 0) 
-    {
-      break;
+  try 
+  {
+    while (true) {
+      const response = await axios.get("https://www.cheapshark.com/api/1.0/deals", {
+        params: 
+        {
+          storeID: STORE_ID,
+          onSale: 1,
+          pageNumber: page,
+        },
+      });      
+      const data = response.data;
+      if (!data || data.length === 0) 
+      {
+        break;
+      }
+      allDeals.push(...data);
+      page++;
+      if (page >= MAX_PAGES) 
+      {
+        break;
+      }
     }
-    allDeals.push(...data);
-    page++;
-    if (page >= MAX_PAGES) 
-    {
-      break;
-    }
+    
+    cachedDeals = allDeals.map((deal) => ({
+      title: deal.title,
+      salePrice: deal.salePrice,
+      normalPrice: deal.normalPrice,
+      savings: deal.savings,
+      thumb: deal.thumb,
+      steamAppID: deal.steamAppID,
+    }));
+    cachedTime = now;
+    console.log("Данные загружены и кешированы");
+    return cachedDeals;
   }
-  
-  cachedDeals = allDeals.map((deal) => ({
-    title: deal.title,
-    salePrice: deal.salePrice,
-    normalPrice: deal.normalPrice,
-    savings: deal.savings,
-    thumb: deal.thumb,
-    steamAppID: deal.steamAppID,
-  }));
-  cachedTime = now;
-  console.log("Данные загружены и кешированы");
-  return cachedDeals;
+  catch (error)
+  {
+    console.error("Ошибка при загрузке данных из CheapShark API:", error.message);
+    throw new Error("Не удалось загрузить данные. Пожалуйста, попробуйте позже.");
+  }
 }
 
 // Новый маршрут, который собирает данные со всех страниц, применяет фильтры и пагинацию
@@ -114,7 +122,8 @@ app.get("/allDeals", async (req, res) => {
       pageSize: pageSize,
       results: pageDeals,
     });
-  } catch (error) 
+  } 
+  catch (error) 
   {
     console.error("Ошибка при получении /allDeals:", error.message);
     res.status(500).json({ error: "Внутренняя ошибка сервера" });
