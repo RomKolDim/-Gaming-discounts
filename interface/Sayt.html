@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Steam Price</title>
-  <link rel="stylesheet" href="dizain.css">
+  <link rel="stylesheet" href="./css/dizain.css">
   <base target="_blank">
 </head>
 <body>
@@ -23,10 +23,10 @@
 
   <div class="banner-container">
     <div class="gaming-banner">
-      <img src="/src/Image/травма.png" alt="Игровое изображение 1" class="banner-image">
-      <img src="/src/Image/арасака.png" alt="Игровое изображение 2" class="banner-image">
-      <img src="/src/Image/милитех.png" alt="Игровое изображение 3" class="banner-image">
-      <img src="/src/Image/канг тао.png" alt="Игровое изображение 4" class="banner-image">
+      <img src="/interface/Image/травма.png" alt="Игровое изображение 1" class="banner-image">
+      <img src="/interface/Image/арасака.png" alt="Игровое изображение 2" class="banner-image">
+      <img src="/interface/Image/милитех.png" alt="Игровое изображение 3" class="banner-image">
+      <img src="/interface/Image/канг тао.png" alt="Игровое изображение 4" class="banner-image">
     </div>
   </div>
 
@@ -37,8 +37,8 @@
   <!-- Контейнер для поиска и фильтров -->
   <div class="search-container">
     <input type="text" id="search-input" placeholder="Название игры">
-    <input type="number" id="exact-discount-input" placeholder="Точная скидка (%)">
-    <input type="number" id="max-price-input" placeholder="Макс. цена ($)" step="0.01">
+    <input type="number" id="exact-discount-input" placeholder="Точная скидка (%)" min="0" max="100">
+    <input type="number" id="max-price-input" placeholder="Макс. цена ($)" step="0.01" min="0">
     <button id="search-button">Поиск</button>
   </div>
 
@@ -68,9 +68,9 @@
       <div class="footer-section">
         <h3>Следите за нами</h3>
         <div class="social-icons">
-          <a href="https://t.me/+fGUC9U-loW41ZjVi"><img src="/src/Image/icons8-телеграм.svg" alt="Telegram"></a>
-          <a href="https://github.com/RomKolDim/-Gaming-discounts"><img src="/src/Image/github-mark-white.svg" alt="GitHub"></a>
-          <a href="https://discord.gg/Dwn75T2P"><img src="/src/Image/icons8-discord.svg" alt="Discord"></a>
+          <a href="https://t.me/+fGUC9U-loW41ZjVi"><img src="/interface/Image/icons8-телеграм.svg" alt="Telegram"></a>
+          <a href="https://github.com/RomKolDim/-Gaming-discounts"><img src="/interface/Image/github-mark-white.svg" alt="GitHub"></a>
+          <a href="https://discord.gg/Dwn75T2P"><img src="/interface/Image/icons8-discord.svg" alt="Discord"></a>
         </div>
       </div>
     </div>
@@ -103,8 +103,9 @@
     </div>
   </div>
 
-  <script src="/src/Banner.js"></script>
-  <script src="/src/Information.js"></script>
+  <script src="/interface/js/Banner.js"></script>
+  
+  <script type="module" src="js/app.js"></script>
 
   <script>
     // Функции для работы всплывающих окон

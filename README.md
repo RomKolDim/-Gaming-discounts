@@ -10,4 +10,4 @@ The technologies we used were **CheapShark API**, **Node js**, **Axios**, **Cors
 3. Then, install dependencies: `npm install axios`, `npm install cors`, `npm install express`.
 4. To run our application, go to the folder: `cd src`.
 5. And then write `node server.js`.
-6. If you have the **Live Server** extention, you will press on **Go Live** to run HTML (If you don't have it, right click on the file **Sayt.html** and press on **Open with Five Server**).
+6. If you have the **Live Server** extention, you will press on **Go Live** to run HTML (If you don't have it, right click on the file **Sayt.html** and press on **Open with Live Server**).
